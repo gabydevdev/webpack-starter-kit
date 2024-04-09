@@ -1,0 +1,55 @@
+{
+	"name": "webpack-starter-kit",
+	"version": "1.0.0",
+	"description": "A light foundation for your next frontend project based on webpack.",
+	"scripts": {
+		"lint": "npm run lint:styles; npm run lint:scripts",
+		"lint:styles": "stylelint 'src/styles/**'",
+		"lint:scripts": "eslint 'src/scripts/**'",
+		"build": "cross-env NODE_ENV=production webpack --config .config/webpack/webpack.config.prod.js",
+		"start": "webpack serve --config .config/webpack/webpack.config.dev.js"
+	},
+	"keywords": [
+		"webpack",
+		"startkit",
+		"frontend",
+		"es6",
+		"javascript",
+		"webdev"
+	],
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "<latest_version>",
+		"@babel/eslint-parser": "<latest_version>",
+		"@babel/plugin-proposal-class-properties": "<latest_version>",
+		"@babel/plugin-syntax-dynamic-import": "<latest_version>",
+		"@babel/preset-env",
+		"babel-loader": "<latest_version>",
+		"clean-webpack-plugin": "<latest_version>",
+		"copy-webpack-plugin": "<latest_version>",
+		"cross-env": "<latest_version>",
+		"css-loader": "<latest_version>",
+		"eslint": "<latest_version>",
+		"eslint-webpack-plugin": "<latest_version>",
+		"file-loader": "<latest_version>",
+		"html-loader": "<latest_version>",
+		"html-webpack-plugin": "<latest_version>",
+		"mini-css-extract-plugin": "<latest_version>",
+		"sass": "<latest_version>",
+		"postcss-loader": "<latest_version>",
+		"postcss-preset-env": "<latest_version>",
+		"sass-loader": "<latest_version>",
+		"style-loader": "<latest_version>",
+		"stylelint": "<latest_version>",
+		"stylelint-config-standard": "<latest_version>",
+		"stylelint-webpack-plugin": "<latest_version>",
+		"webpack": "<latest_version>",
+		"webpack-cli": "<latest_version>",
+		"webpack-dev-server": "<latest_version>",
+		"webpack-merge": "<latest_version>"
+	},
+	"dependencies": {
+		"core-js": "<latest_version>",
+		"regenerator-runtime": "<required_if_using_generators>"
+	}
+}

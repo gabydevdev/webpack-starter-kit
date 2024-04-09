@@ -1,0 +1,21 @@
+{
+	"name": "webpack-starter-kit",
+	"version": "1.0.0",
+	"description": "A light foundation for your next frontend project based on webpack.",
+	"scripts": {
+		"lint": "npm run lint:styles; npm run lint:scripts",
+		"lint:styles": "stylelint 'src/styles/**'",
+		"lint:scripts": "eslint 'src/scripts/**'",
+		"build": "cross-env NODE_ENV=production webpack --config .config/webpack/webpack.config.prod.js",
+		"start": "webpack serve --config .config/webpack/webpack.config.dev.js"
+	},
+	"keywords": [
+		"webpack",
+		"startkit",
+		"frontend",
+		"es6",
+		"javascript",
+		"webdev"
+	],
+	"license": "MIT",
+}
