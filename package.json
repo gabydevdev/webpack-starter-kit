@@ -3,10 +3,12 @@
 	"version": "1.0.0",
 	"description": "A light foundation for your next frontend project based on webpack.",
 	"scripts": {
-		"lint:styles": "stylelint src/styles/** --config .config/stylelint.config.js",
-		"lint:scripts": "eslint src/scripts/** --config .config/eslint.config.js",
-		"build": "cross-env NODE_ENV=production webpack --config .config/webpack/webpack.config.prod.js",
-		"start": "webpack serve --config .config/webpack/webpack.config.dev.js"
+		"lint:styles": "stylelint src/styles/**",
+		"fix:styles": "stylelint src/styles/** --fix",
+		"lint:scripts": "eslint src/scripts/**",
+		"build:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.config.prod.js",
+		"build:prod": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
+		"start": "webpack serve --config webpack/webpack.config.dev.js"
 	},
 	"keywords": [
 		"webpack",
