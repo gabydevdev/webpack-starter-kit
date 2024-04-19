@@ -7,29 +7,40 @@ const StylelintPlugin = require("stylelint-webpack-plugin");
 const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
+	target: "web",
 	mode: "development",
 	devtool: "eval-cheap-source-map",
+	output: {
+		chunkFilename: "js/[name].chunk.js",
+	},
 	devServer: {
-		static: {
-			directory: Path.join(__dirname, "../build"),
-		}
+		client: {
+			logging: "error",
+		},
+		hot: true,
 	},
 	plugins: [
-		new Webpack.HotModuleReplacementPlugin(),
+		new Webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify("development"),
+		}),
 		new ESLintPlugin({
-			extensions: ["js"],
-			exclude: "node_modules",
-			context: Path.resolve(__dirname, "../src"), // Specify the directory to lint
-			eslintPath: require.resolve("eslint")
+			extensions: "js",
+			emitWarning: true,
+			files: Path.resolve(__dirname, "../src"),
 		}),
 		new StylelintPlugin({
-			files: "src/**/*.scss"
+			files: Path.join("src", "**/*.s?(a|c)ss"),
 		}),
 	],
 	module: {
 		rules: [
 			{
-				test: /\.s?css$/,
+				test: /\.js$/,
+				include: Path.resolve(__dirname, "../src"),
+				loader: "babel-loader",
+			},
+			{
+				test: /\.s?css$/i,
 				use: [
 					"style-loader",
 					{
@@ -38,12 +49,8 @@ module.exports = merge(common, {
 							sourceMap: true,
 						},
 					},
-					{
-						loader: "sass-loader",
-						options: {
-							sourceMap: true,
-						},
-					}
+					"postcss-loader",
+					"sass-loader",
 				],
 			},
 		],

@@ -6,12 +6,12 @@
 	],
 	"plugins": ["stylelint-scss", "stylelint-order"],
 	"rules": {
-        "no-descending-specificity": null,
+		"no-descending-specificity": null,
 		"font-family-no-missing-generic-family-keyword": null,
 		"no-duplicate-selectors": null,
 		"selector-max-compound-selectors": 9999,
 		"max-nesting-depth": 9999,
-        "declaration-block-no-duplicate-properties": true,
+		"declaration-block-no-duplicate-properties": true,
 		"media-feature-range-notation": "prefix",
 		"at-rule-empty-line-before": [
 			"always",
@@ -21,13 +21,7 @@
 					"blockless-after-blockless",
 					"first-nested"
 				],
-				"ignoreAtRules": [
-					"else",
-					"else if",
-					"import",
-					"include",
-					"use"
-				]
+				"ignoreAtRules": ["else", "else if", "import", "include", "use"]
 			}
 		],
 		"selector-no-qualifying-type": [
