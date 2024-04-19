@@ -11,29 +11,40 @@ module.exports = merge(common, {
 	devtool: "eval-cheap-source-map",
 	devServer: {
 		static: {
-			directory: Path.join(__dirname, "../../build"),
-		},
-		hot: true,
+			directory: Path.join(__dirname, "../build"),
+		}
 	},
 	plugins: [
 		new Webpack.HotModuleReplacementPlugin(),
 		new ESLintPlugin({
 			extensions: ["js"],
 			exclude: "node_modules",
-			context: Path.resolve(__dirname, "../../src"), // Specify the directory to lint
-			eslintPath: require.resolve("eslint"),
-			overrideConfigFile: Path.resolve(__dirname, "../eslint.config.js"), // Path to your ESLint configuration
+			context: Path.resolve(__dirname, "../src"), // Specify the directory to lint
+			eslintPath: require.resolve("eslint")
 		}),
 		new StylelintPlugin({
-			files: "src/**/*.scss",
-			configFile: Path.resolve(__dirname, "../stylelint.config.js"), // Path to your Stylelint configuration
+			files: "src/**/*.scss"
 		}),
 	],
 	module: {
 		rules: [
 			{
 				test: /\.s?css$/,
-				use: ["style-loader", "css-loader", "sass-loader"],
+				use: [
+					"style-loader",
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: "sass-loader",
+						options: {
+							sourceMap: true,
+						},
+					}
+				],
 			},
 		],
 	},
