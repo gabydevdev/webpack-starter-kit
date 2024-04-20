@@ -18,8 +18,8 @@ function generateHtmlPlugins(templateDir) {
 					template: Path.resolve(
 						__dirname,
 						`${templateDir}/${name}.${extension}`
-					),
-					base: '/${name}/'
+					)
+				});
 				});
 			}
 		})
