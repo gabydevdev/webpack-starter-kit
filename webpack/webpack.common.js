@@ -19,6 +19,7 @@ function generateHtmlPlugins(templateDir) {
 						__dirname,
 						`${templateDir}/${name}.${extension}`
 					),
+					base: '/${name}/'
 				});
 			}
 		})
