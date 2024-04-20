@@ -54,11 +54,8 @@ module.exports = {
 	},
 	plugins: [
 		new Dotenv({
-			systemvars: true,
-			path:
-				process.env.NODE_ENV === "production"
-					? Path.resolve(__dirname, "../.env.production.local")
-					: Path.resolve(__dirname, "../.env.development.local"),
+			path: Path.resolve(__dirname, `../.env.${process.env.NODE_ENV}`),
+			ignoreStub: true,
 		}),
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin({
@@ -67,6 +64,10 @@ module.exports = {
 			],
 		}),
 		...htmlPlugins, // Spread all dynamically generated HtmlWebpackPlugin instances
+		function() {
+			console.log('NODE_ENV:', process.env.NODE_ENV);
+			console.log('BASE_URL:', process.env.BASE_URL);
+		},
 	],
 	module: {
 		rules: [
