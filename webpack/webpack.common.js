@@ -66,6 +66,7 @@ module.exports = {
 		...htmlPlugins, // Spread all dynamically generated HtmlWebpackPlugin instances
 		function() {
 			console.log('NODE_ENV:', process.env.NODE_ENV);
+			console.log('Resolved .env path:', Path.resolve(__dirname, `../.env.${process.env.NODE_ENV}`));
 			console.log('BASE_URL:', process.env.BASE_URL);
 		},
 	],
