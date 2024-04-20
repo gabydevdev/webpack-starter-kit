@@ -11,3 +11,5 @@ if (document.readyState === "complete") {
 } else {
 	window.addEventListener("load", init);
 }
+
+console.log(process.env.NODE_ENV);

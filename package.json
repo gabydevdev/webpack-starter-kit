@@ -6,8 +6,8 @@
 		"lint:styles": "stylelint src/**/*.scss",
 		"lint:scripts": "eslint src/**/*js",
 		"lint": "npm run lint:styles; npm run lint:scripts",
-		"build": "cross-env NODE_ENV=production ENV_PATH=.env.production webpack --config webpack/webpack.config.prod.js",
-		"start": "cross-env NODE_ENV=development ENV_PATH=.env.development webpack serve --config webpack/webpack.config.dev.js"
+		"build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
+		"start": "webpack serve --open --env ENV_FILE=.env.development.local --config webpack/webpack.config.dev.js"
 	},
 	"keywords": [
 		"webpack",

@@ -20,9 +20,10 @@ function generateHtmlPlugins(templateDir) {
 						__dirname,
 						`${templateDir}/${name}.${extension}`
 					),
+					minify: false,
 					base: process.env.BASE_URL
-						? `<base href="${process.env.BASE_URL}">`
-						: undefined,
+						? process.env.BASE_URL
+						: false,
 				});
 			}
 		})
@@ -53,7 +54,11 @@ module.exports = {
 	},
 	plugins: [
 		new Dotenv({
-			path: Path.resolve(__dirname, '..', process.env.ENV_PATH)  // Dynamically load the specified .env file
+			systemvars: true,
+			path:
+				process.env.NODE_ENV === "production"
+					? Path.resolve(__dirname, "../.env.production.local")
+					: Path.resolve(__dirname, "../.env.development.local"),
 		}),
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin({
@@ -73,6 +78,9 @@ module.exports = {
 			{
 				test: /\.html$/i,
 				loader: "html-loader",
+				options: {
+					minimize: false
+				}
 			},
 			{
 				test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,

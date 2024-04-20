@@ -173,3 +173,4 @@ Temporary Items
 # production
 build
 .vscode/snipsnap.code-snippets
+.env.development
