@@ -1,43 +1,47 @@
 # Webpack Starter Kit
 
-## Overview
-This Webpack Starter Kit provides a lightweight foundation for building frontend projects using Webpack. It is configured with essential tools to optimize development and build processes, ensuring you can focus on creating your application without worrying about initial setup complexities.
+## Introduction
+Webpack Starter Kit is designed to serve as a foundational starting point for web development projects using Webpack. It simplifies the setup with pre-configured settings for performance optimizations, development conveniences, and production-ready builds.
 
 ## Features
-- **Webpack 5**: Leverages the latest Webpack for bundling.
-- **Babel Integration**: Supports ES6+ JavaScript through Babel.
-- **SASS Support**: Includes SASS configuration for styling.
-- **Development Server**: Configured with a webpack dev server for live reloading.
-- **Optimized Production Builds**: Includes production-specific configurations like minification and optimization out of the box.
-- **Linter Setup**: ESLint and StyleLint integrated for code quality.
+- **Simplified Webpack Configuration**: Easy-to-understand configuration files for development and production environments.
+- **Environment Variable Management**: Integrated support for `.env` files to manage environment-specific variables effectively.
+- **CSS and JS Minification**: Configured to reduce the size of CSS and JavaScript files for production.
+- **Live Reloading**: Enhances development experience by enabling live reloading of assets and HTML.
 
 ## Quick Start
-Clone the repository and install the dependencies:
+Clone the repository and install the dependencies to get started with your project:
+
 ```bash
 git clone https://github.com/iamgaby7521/webpack-starter-kit.git
 cd webpack-starter-kit
 npm install
 ```
 
+## Usage
 To start the development server:
+
 ```bash
 npm start
 ```
 
 To build the production package:
+
 ```bash
 npm run build
 ```
 
-## Project Structure
-- `src/`: Source files for the application.
-- `src/index.html`: Entry HTML file.
-- `src/scripts/`: JavaScript files.
-- `src/styles/`: Stylesheets for the application.
-- `webpack/`: Webpack configuration files.
+## Configuration
+Details about the project structure and configuration:
+
+- `webpack.config.dev.js` and `webpack.config.prod.js` for development and production environments.
+- `.env.development` and `.env.production` for managing environment variables.
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a pull request.
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to submit contributions, and follow our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## License
-This project is open-sourced under the MIT license. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Support
+If you encounter any problems or have any queries, please open an issue via the GitHub issue tracker.
