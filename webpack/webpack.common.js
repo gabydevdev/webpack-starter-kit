@@ -3,7 +3,8 @@ const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+
+require("dotenv").config({path: Path.resolve(__dirname, `../.env.${process.env.NODE_ENV}`)});
 
 // Function to generate HTML plugins dynamically
 function generateHtmlPlugins(templateDir) {
@@ -53,10 +54,6 @@ module.exports = {
 		modules: [Path.resolve(__dirname, "../node_modules"), "node_modules"],
 	},
 	plugins: [
-		new Dotenv({
-			path: Path.resolve(__dirname, `../.env.${process.env.NODE_ENV}`),
-			ignoreStub: true,
-		}),
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin({
 			patterns: [
