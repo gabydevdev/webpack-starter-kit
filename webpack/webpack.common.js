@@ -3,6 +3,7 @@ const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 // Function to generate HTML plugins dynamically
 function generateHtmlPlugins(templateDir) {
@@ -18,8 +19,10 @@ function generateHtmlPlugins(templateDir) {
 					template: Path.resolve(
 						__dirname,
 						`${templateDir}/${name}.${extension}`
-					)
-				});
+					),
+					base: process.env.BASE_URL
+						? `<base href="${process.env.BASE_URL}">`
+						: undefined,
 				});
 			}
 		})
@@ -49,6 +52,9 @@ module.exports = {
 		modules: [Path.resolve(__dirname, "../node_modules"), "node_modules"],
 	},
 	plugins: [
+		new Dotenv({
+			path: Path.resolve(__dirname, '..', process.env.ENV_PATH)  // Dynamically load the specified .env file
+		}),
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin({
 			patterns: [
