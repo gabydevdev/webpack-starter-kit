@@ -1,7 +1,31 @@
 const Path = require("path");
+const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+// Function to generate HTML plugins dynamically
+function generateHtmlPlugins(templateDir) {
+	const templateFiles = fs.readdirSync(Path.resolve(__dirname, templateDir));
+	return templateFiles
+		.map((item) => {
+			const parts = item.split(".");
+			const name = parts[0];
+			const extension = parts[1];
+			if (extension === "html") {
+				return new HtmlWebpackPlugin({
+					filename: `${name}.html`,
+					template: Path.resolve(
+						__dirname,
+						`${templateDir}/${name}.${extension}`
+					),
+				});
+			}
+		})
+		.filter((item) => item); // Filter undefined items
+}
+
+const htmlPlugins = generateHtmlPlugins("../src");
 
 module.exports = {
 	entry: {
@@ -30,9 +54,7 @@ module.exports = {
 				{ from: Path.resolve(__dirname, "../public"), to: "public" },
 			],
 		}),
-		new HtmlWebpackPlugin({
-			template: Path.resolve(__dirname, "../src/index.html"),
-		}),
+		...htmlPlugins, // Spread all dynamically generated HtmlWebpackPlugin instances
 	],
 	module: {
 		rules: [
