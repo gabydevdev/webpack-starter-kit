@@ -13,15 +13,15 @@ module.exports = merge(common, {
 		filename: "js/[name].[contenthash].js",
 		chunkFilename: "js/[name].[contenthash].chunk.js",
 	},
+	plugins: [
+		new Webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify("production"),
+		}),
 		new MiniCssExtractPlugin({
 			filename: "css/[name].[chunkhash:8].css",
 			chunkFilename: "css/[name].[chunkhash:8].chunk.js",
 		}),
-		new HtmlWebpackPlugin({
-			template: Path.resolve(__dirname, '../src/index.html'),
-			filename: 'index.html',
-			base: '/'
-		}),
+	],
 	module: {
 		rules: [
 			{
